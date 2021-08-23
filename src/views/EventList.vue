@@ -25,7 +25,7 @@ export default {
     ...mapState(['event', 'user'])
   },
   methods: {
-    ...mapActions(['fetchEvents'])
+    ...mapActions('event', ['fetchEvents'])
   }
 }
 </script>
