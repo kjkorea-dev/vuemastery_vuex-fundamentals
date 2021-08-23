@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   props: ['id'],
   created() {
-    this.$store.dispatch('fetchEvent', this.id).catch(error => {
+    this.fetchEvent(this.id).catch(error => {
       this.$router.push({
         name: 'ErrorDisplay',
         params: { error }
@@ -19,10 +19,10 @@ export default {
     })
   },
   computed: {
-    /* event() {
-      return this.$store.state.event
-    } */
     ...mapState(['event'])
+  },
+  methods: {
+    ...mapActions(['fetchEvent'])
   }
 }
 </script>
